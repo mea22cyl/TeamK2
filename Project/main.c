@@ -39,7 +39,7 @@ int main(void)
     /* Infinite loop. */
     while (1)
     {
-    	if (get_calibrated_prox(0)>=200 || get_calibrated_prox(7)>=200)
+    	if (get_calibrated_prox(0)>=200 || get_calibrated_prox(7)>=200 || get_calibrated_prox(5)>=200 || get_calibrated_prox(6)>=200 || get_calibrated_prox(4)>=200)
     	{
     		set_front_led(2);
     		left_motor_set_speed(500);
@@ -50,9 +50,32 @@ int main(void)
     		left_motor_set_speed(500);
     		right_motor_set_speed(500);
     	}
-    }
-}
 
+    	/*Proximity Maintenance*/
+    	if (get_calibrated_prox(2)<=190)
+    	{
+    		left_motor_set_speed(500);
+    		right_motor_set_speed(-200);
+    	}
+
+    	else
+    	{
+    		left_motor_set_speed(500);
+    		right_motor_set_speed(500);
+    	}
+
+    	if (get_calibrated_prox(5)<=190)
+    	{
+    		left_motor_set_speed(-200);
+    	 	right_motor_set_speed(500);
+       	}
+      	else
+       	{
+       		left_motor_set_speed(500);
+       		right_motor_set_speed(500);
+       	}
+     }
+}
 #define STACK_CHK_GUARD 0xe2dee396
 uintptr_t __stack_chk_guard = STACK_CHK_GUARD;
 
